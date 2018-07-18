@@ -1,11 +1,12 @@
-package com.example.caucse.mcdcdc;
+package com.example.caucse.myparcelable;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -17,21 +18,19 @@ public class MainActivity extends AppCompatActivity {
         Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-               Intent intent = new Intent(getApplicationContext(),MenyActivity.class);
-               startActivityForResult(intent, 101);
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MenuActivity.class);
+
+                ArrayList<String> names = new ArrayList<String>();
+                names.add("권우람");
+                names.add("우람권");
+
+                intent.putExtra("names",names);
+
+                startActivityForResult(intent, 101);
+
             }
         });
     }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if ( requestCode == 101) {
-            String name = data.getStringExtra("name");
-            Toast.makeText(getApplicationContext(),"메뉴화면으로부터 응답 : " + name, Toast.LENGTH_LONG).show();
-        }
-
-    }
 }
+
