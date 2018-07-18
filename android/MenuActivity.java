@@ -34,7 +34,12 @@ public class MenuActivity extends AppCompatActivity {
             ArrayList<String> names = (ArrayList<String>) intent.getSerializableExtra("names");
             if (names != null) {
                 Toast.makeText(getApplicationContext(),"전달받은 이름 리스트 갯수 : " + names.size(), Toast.LENGTH_LONG).show();
+            }
 
+            SimpleData data = (SimpleData) intent.getParcelableExtra("data");
+
+            if (data != null) {
+                Toast.makeText(getApplicationContext(),"전달받은 SimpleData  : " + data.message, Toast.LENGTH_LONG).show();
             }
         }
     }

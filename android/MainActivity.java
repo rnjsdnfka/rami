@@ -27,6 +27,9 @@ public class MainActivity extends AppCompatActivity {
 
                 intent.putExtra("names",names);
 
+                SimpleData data = new SimpleData(100, "Hello");
+                intent.putExtra("data", data); //파슬러블로 구현한 클래스이용해서 만든 객체를 넣을 수있음
+
                 startActivityForResult(intent, 101);
 
             }
